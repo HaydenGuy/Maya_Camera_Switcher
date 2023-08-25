@@ -18,6 +18,8 @@ class Ui_camera_switcher(object):
         if not camera_switcher.objectName():
             camera_switcher.setObjectName(u"camera_switcher")
         camera_switcher.resize(238, 206)
+        self.action_create_camera = QAction(camera_switcher)
+        self.action_create_camera.setObjectName(u"action_create_camera")
         self.centralwidget = QWidget(camera_switcher)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -65,10 +67,15 @@ class Ui_camera_switcher(object):
         self.menubar = QMenuBar(camera_switcher)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 238, 23))
+        self.create_menu_bar = QMenu(self.menubar)
+        self.create_menu_bar.setObjectName(u"create_menu_bar")
         camera_switcher.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(camera_switcher)
         self.statusbar.setObjectName(u"statusbar")
         camera_switcher.setStatusBar(self.statusbar)
+
+        self.menubar.addAction(self.create_menu_bar.menuAction())
+        self.create_menu_bar.addAction(self.action_create_camera)
 
         self.retranslateUi(camera_switcher)
 
@@ -77,9 +84,11 @@ class Ui_camera_switcher(object):
 
     def retranslateUi(self, camera_switcher):
         camera_switcher.setWindowTitle(QCoreApplication.translate("camera_switcher", u"Camera Switcher", None))
+        self.action_create_camera.setText(QCoreApplication.translate("camera_switcher", u"Camera", None))
         self.persp_bt.setText(QCoreApplication.translate("camera_switcher", u"persp", None))
         self.top_bt.setText(QCoreApplication.translate("camera_switcher", u"top", None))
         self.front_bt.setText(QCoreApplication.translate("camera_switcher", u"front", None))
         self.side_bt.setText(QCoreApplication.translate("camera_switcher", u"side", None))
+        self.create_menu_bar.setTitle(QCoreApplication.translate("camera_switcher", u"Create...", None))
     # retranslateUi
 

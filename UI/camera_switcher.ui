@@ -83,8 +83,20 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="create_menu_bar">
+    <property name="title">
+     <string>Create...</string>
+    </property>
+    <addaction name="action_create_camera"/>
+   </widget>
+   <addaction name="create_menu_bar"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_create_camera">
+   <property name="text">
+    <string>Camera</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
