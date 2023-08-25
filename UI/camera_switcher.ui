@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>261</width>
-    <height>207</height>
+    <width>238</width>
+    <height>206</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,36 +16,61 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="button_layout">
-      <item>
-       <widget class="QPushButton" name="persp_bt">
-        <property name="text">
-         <string>persp</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="top_bt">
-        <property name="text">
-         <string>top</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="front_bt">
-        <property name="text">
-         <string>front</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="side_bt">
-        <property name="text">
-         <string>side</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustIgnored</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>220</width>
+         <height>142</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QVBoxLayout" name="button_layout">
+          <item>
+           <widget class="QPushButton" name="persp_bt">
+            <property name="text">
+             <string>persp</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="top_bt">
+            <property name="text">
+             <string>top</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="front_bt">
+            <property name="text">
+             <string>front</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="side_bt">
+            <property name="text">
+             <string>side</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -54,7 +79,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>261</width>
+     <width>238</width>
      <height>23</height>
     </rect>
    </property>

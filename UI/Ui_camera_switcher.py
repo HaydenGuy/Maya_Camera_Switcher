@@ -17,40 +17,54 @@ class Ui_camera_switcher(object):
     def setupUi(self, camera_switcher):
         if not camera_switcher.objectName():
             camera_switcher.setObjectName(u"camera_switcher")
-        camera_switcher.resize(261, 207)
+        camera_switcher.resize(238, 206)
         self.centralwidget = QWidget(camera_switcher)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setFrameShape(QFrame.NoFrame)
+        self.scrollArea.setSizeAdjustPolicy(QAbstractScrollArea.AdjustIgnored)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 220, 142))
+        self.horizontalLayout_2 = QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.button_layout = QVBoxLayout()
         self.button_layout.setObjectName(u"button_layout")
-        self.persp_bt = QPushButton(self.centralwidget)
+        self.persp_bt = QPushButton(self.scrollAreaWidgetContents)
         self.persp_bt.setObjectName(u"persp_bt")
 
         self.button_layout.addWidget(self.persp_bt)
 
-        self.top_bt = QPushButton(self.centralwidget)
+        self.top_bt = QPushButton(self.scrollAreaWidgetContents)
         self.top_bt.setObjectName(u"top_bt")
 
         self.button_layout.addWidget(self.top_bt)
 
-        self.front_bt = QPushButton(self.centralwidget)
+        self.front_bt = QPushButton(self.scrollAreaWidgetContents)
         self.front_bt.setObjectName(u"front_bt")
 
         self.button_layout.addWidget(self.front_bt)
 
-        self.side_bt = QPushButton(self.centralwidget)
+        self.side_bt = QPushButton(self.scrollAreaWidgetContents)
         self.side_bt.setObjectName(u"side_bt")
 
         self.button_layout.addWidget(self.side_bt)
 
 
-        self.horizontalLayout.addLayout(self.button_layout)
+        self.horizontalLayout_2.addLayout(self.button_layout)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.horizontalLayout.addWidget(self.scrollArea)
 
         camera_switcher.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(camera_switcher)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 261, 23))
+        self.menubar.setGeometry(QRect(0, 0, 238, 23))
         camera_switcher.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(camera_switcher)
         self.statusbar.setObjectName(u"statusbar")
