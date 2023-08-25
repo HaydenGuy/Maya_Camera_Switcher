@@ -15,7 +15,7 @@ class CameraSwitcher(QMainWindow, Ui_camera_switcher):
         self.default_cameras = ('perspShape', 'topShape', 'frontShape', 'sideShape')
         self.list_all_cameras()
 
-        # Push buttons for camera switching
+        # Push buttons for default camera switching
         self.persp_bt.clicked.connect(self.camera_switch)
         self.top_bt.clicked.connect(self.camera_switch)
         self.front_bt.clicked.connect(self.camera_switch)
@@ -28,23 +28,28 @@ class CameraSwitcher(QMainWindow, Ui_camera_switcher):
 
         '''
             Iterate through the list of cameras and if the camera is not one of the defaults
-            Create a new push button with the name of that camera, removing the word Shape[:-5]
+            camera_name is the name of the camera, removing the word Shape
+            Create a new push button with the name of the camera_name
             Add that camera to the layout widget
         '''
         for camera in cameras:
             if camera not in self.default_cameras:
-                push_button = QPushButton(camera[:-5])
-                push_button.setObjectName(camera[:-5])
-                self.button_layout.addWidget(push_button)
+                camera_name = camera.replace('Shape', '')
+                push_button = QPushButton(camera_name, self)
+                push_button.setObjectName(camera_name)
+                self.button_layout.addWidget(push_button)  
 
+                # Connecting the new push button to the camera_switch method
+                push_button.clicked.connect(self.camera_switch)
+                
     '''
         Retrieves the object that triggered the signal
-        Sets the camera name to be the objects name and removes the last three characters (_bt)
+        Sets the camera name to be the objects name and replaces _bt if its present (default buttons)
         Tells maya to look through the given camera name
     '''
     def camera_switch(self):
-        button_clicked = self.sender()
-        camera_name = button_clicked.objectName()[:-3]
+        camera = self.sender()
+        camera_name = camera.objectName().replace('_bt', '')
         cmds.lookThru(camera_name)
 
 
