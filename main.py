@@ -35,7 +35,6 @@ class CameraSwitcher(QMainWindow, Ui_camera_switcher):
     def list_all_cameras(self):
         # Gets a list of all the cameras in the scene
         cameras = cmds.ls(type='camera')
-        print(cameras)
 
         '''
             Iterate through the list of cameras and if the camera is not a default or added camera
