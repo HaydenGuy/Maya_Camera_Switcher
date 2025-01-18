@@ -1,30 +1,28 @@
 import sys
-import importlib
-# Imports the folder path. Allows for modular UI
-sys.path.append('/mnt/32346261-2a77-4ea4-ad97-df46c23e0f72/Maya_Scripts/Camera_Switcher')
 
 import maya.cmds as cmds
 
-from PySide2.QtWidgets import QMainWindow, QApplication, QPushButton
-from UI.Ui_camera_switcher import Ui_camera_switcher
+from PySide6.QtWidgets import QMainWindow, QApplication, QPushButton
+import Maya_Camera_Switcher.UI.camera_switcher_ui as ui 
 
-class CameraSwitcher(QMainWindow, Ui_camera_switcher):
+class CameraSwitcher(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
+        self.ui = ui.Ui_camera_switcher()
+        self.ui.setupUi(self)
 
         self.default_cameras = ('perspShape', 'topShape', 'frontShape', 'sideShape')
         self.added_cameras = []
         self.list_all_cameras()
 
         # Triggers the create_camera method if Create... Camera is triggered
-        self.action_create_camera.triggered.connect(self.create_camera)
+        self.ui.action_create_camera.triggered.connect(self.create_camera)
 
         # Push buttons for default camera switching
-        self.persp_bt.clicked.connect(self.camera_switch)
-        self.top_bt.clicked.connect(self.camera_switch)
-        self.front_bt.clicked.connect(self.camera_switch)
-        self.side_bt.clicked.connect(self.camera_switch)
+        self.ui.persp_bt.clicked.connect(self.camera_switch)
+        self.ui.top_bt.clicked.connect(self.camera_switch)
+        self.ui.front_bt.clicked.connect(self.camera_switch)
+        self.ui.side_bt.clicked.connect(self.camera_switch)
 
     # Creates a camera and runs the list_all_cameras to update the push buttons
     def create_camera(self):
@@ -48,7 +46,7 @@ class CameraSwitcher(QMainWindow, Ui_camera_switcher):
                 camera_name = camera.replace('Shape', '')
                 push_button = QPushButton(camera_name, self)
                 push_button.setObjectName(camera_name)
-                self.button_layout.addWidget(push_button)
+                self.ui.button_layout.addWidget(push_button)
                 self.added_cameras.append(camera)
 
                 # Connecting the new push button to the camera_switch method
